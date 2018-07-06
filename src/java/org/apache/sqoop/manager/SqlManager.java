@@ -178,7 +178,7 @@ public abstract class SqlManager
     } finally {
       try {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       } catch (SQLException sqlE) {
         LoggingUtils.logAll(LOG, "SQLException closing ResultSet: "
           + sqlE.toString(), sqlE);
@@ -223,7 +223,7 @@ public abstract class SqlManager
         return ret.toArray(new String[ret.size()]);
       } finally {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       }
     } catch (SQLException e) {
       LoggingUtils.logAll(LOG, "Error reading procedure metadata: ", e);
@@ -306,9 +306,9 @@ public abstract class SqlManager
 
         // If we have an unsigned int we need to make extra room by
         // plopping it into a bigint
-        if (typeId == Types.INTEGER &&  !metadata.isSigned(i)){
-            typeId = Types.BIGINT;
-        }
+        // if (typeId == Types.INTEGER &&  !metadata.isSigned(i)){
+        //    typeId = Types.BIGINT;
+        // }
 
         String colName = metadata.getColumnLabel(i);
         if (colName == null || colName.equals("")) {
@@ -330,7 +330,7 @@ public abstract class SqlManager
     } finally {
       try {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       } catch (SQLException sqlE) {
         LoggingUtils.logAll(LOG,
           "SQLException closing ResultSet: " + sqlE.toString(), sqlE);
@@ -389,7 +389,7 @@ public abstract class SqlManager
     } finally {
       try {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       } catch (SQLException sqlE) {
         LoggingUtils.logAll(LOG, "SQLException closing ResultSet: "
           + sqlE.toString(), sqlE);
@@ -480,7 +480,7 @@ public abstract class SqlManager
         return ret.isEmpty() ? null : ret;
       } finally {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       }
     } catch (SQLException sqlException) {
       LoggingUtils.logAll(LOG, "Error reading primary key metadata: "
@@ -520,7 +520,7 @@ public abstract class SqlManager
         return ret.isEmpty() ? null : ret;
       } finally {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       }
     } catch (SQLException sqlException) {
       LoggingUtils.logAll(LOG, "Error reading primary key metadata: "
@@ -564,7 +564,7 @@ public abstract class SqlManager
       if (null != results) {
         try {
           results.close();
-          getConnection().commit();
+          // getConnection().commit();
         } catch (SQLException sqlE) {
           LoggingUtils.logAll(LOG, "Exception closing ResultSet: "
             + sqlE.toString(), sqlE);
@@ -590,7 +590,7 @@ public abstract class SqlManager
         }
       } finally {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       }
     } catch (SQLException sqlException) {
       LoggingUtils.logAll(LOG, "Error reading primary key metadata: "
@@ -826,7 +826,7 @@ public abstract class SqlManager
     } finally {
       try {
         results.close();
-        getConnection().commit();
+        // getConnection().commit();
       } catch (SQLException sqlE) {
         LoggingUtils.logAll(LOG, "SQLException closing ResultSet: "
           + sqlE.toString(), sqlE);
@@ -1067,7 +1067,7 @@ public abstract class SqlManager
       Connection conn = getConnection();
       stmt = conn.createStatement();
       int updateCount = stmt.executeUpdate(deleteQuery);
-      conn.commit();
+      // conn.commit();
       LOG.info("Deleted " + updateCount + " records from " + tableName);
     } catch (SQLException ex) {
       LoggingUtils.logAll(LOG, "Unable to execute delete query: "
@@ -1115,7 +1115,7 @@ public abstract class SqlManager
         conn.rollback();
         throw new RuntimeException("Inconsistent record counts");
       }
-      conn.commit();
+      // conn.commit();
     } catch (SQLException ex) {
       LoggingUtils.logAll(LOG, "Unable to migrate data from "
           + fromTable + " to " + toTable, ex);

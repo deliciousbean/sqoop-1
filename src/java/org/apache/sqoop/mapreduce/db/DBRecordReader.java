@@ -164,7 +164,7 @@ public class DBRecordReader<T extends DBWritable> extends
         statement.close();
       }
       if (null != connection && !connection.isClosed()) {
-        connection.commit();
+//        connection.commit();
         connection.close();
       }
     } catch (SQLException e) {

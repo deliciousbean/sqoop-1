@@ -241,7 +241,7 @@ public abstract class AsyncSqlOutputFormat<K extends SqoopRecord, V>
                 && stmtsPerTx != UNLIMITED_STATEMENTS_PER_TRANSACTION)) {
               LOG.debug("Committing transaction of " + curNumStatements
                   + " statements");
-              this.conn.commit();
+//              this.conn.commit();
               this.curNumStatements = 0;
             }
           } catch (BatchUpdateException batchE) {

@@ -301,7 +301,7 @@ extends InputFormat<LongWritable, T> implements Configurable  {
         splits.add(split);
       }
 
-      connection.commit();
+//      connection.commit();
       return splits;
     } catch (SQLException e) {
       throw new IOException("Got SQLException", e);

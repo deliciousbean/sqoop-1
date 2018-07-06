@@ -205,7 +205,7 @@ public class DBOutputFormat<K extends DBWritable, V>
     public void close(TaskAttemptContext context) throws IOException {
       try {
         statement.executeBatch();
-        connection.commit();
+//        connection.commit();
       } catch (SQLException e) {
         try {
           connection.rollback();

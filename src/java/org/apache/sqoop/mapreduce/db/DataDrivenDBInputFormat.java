@@ -173,7 +173,7 @@ public class DataDrivenDBInputFormat<T extends DBWritable>
       // for interpolating split points (i.e., numeric splits, text splits,
       // dates, etc.)
       int sqlDataType = results.getMetaData().getColumnType(1);
-      boolean isSigned = results.getMetaData().isSigned(1);
+      boolean isSigned = true; // results.getMetaData().isSigned(1);
 
       // MySQL has an unsigned integer which we need to allocate space for
       if (sqlDataType == Types.INTEGER && !isSigned){
@@ -215,9 +215,9 @@ public class DataDrivenDBInputFormat<T extends DBWritable>
       }
 
       try {
-        connection.commit();
+//        connection.commit();
         closeConnection();
-      } catch (SQLException se) {
+      } catch (Exception se) {
         LOG.debug("SQLException committing split transaction: "
             + se.toString());
       }
